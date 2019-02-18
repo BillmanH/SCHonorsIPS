@@ -14,8 +14,9 @@ d <- read.csv("data/gradeTable.csv",header = FALSE)
 colnames(d) <- c("Grade","Percent")
 
 ui <- fluidPage(
+  includeHTML("GoogleAnalytics.html"),
   img(src = "SC Centercourt final CMYK.jpg", height = 72, width = 72),
-  h1("Shorecrest Honnors IPS Grade Calculation"),
+  h1("Shorecrest Honors IPS Grade Calculation"),
   p("Please use the fields below to calculate your Honors IPS grade.  Enter both  your current IPS and IPS Challenge grades as they appear in Canvas.  You need to enter the percent- not the letter grade.  All final grades will be rounded to the nearest whole number."),
   numericInput("Number1", "IPS grade :", 75, min = 1, max = 100),
   numericInput("Number2", "IPS Challenge grade :", 75, min = 1, max = 100),
@@ -29,7 +30,7 @@ server <- function(input, output) {
   output$value <- renderText({ 
       
         round(
-          (input$Number1 *.75) + (input$Number2 *.25) 
+          (input$Number1 *.7) + (input$Number2 *.3) 
         )
       
     })
